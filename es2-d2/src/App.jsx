@@ -1,17 +1,23 @@
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Container, Row } from "react-bootstrap"
 // import Container from "react-bootstrap/Container"
+import MyNav from "./components/MyNav"
+import MyFooter from "./components/MyFooter"
+import Welcome from "./components/Welcome"
+import Books from "./components/AllTheBooks"
 
 function App() {
   return (
-    <>
-      <Container>
-        <Row>
-          <h1 className="text-danger">ESERCIZIO 2</h1>
-        </Row>
-      </Container>
-    </>
+    <div id="root">
+      <header>
+        <MyNav />
+      </header>
+      <main>
+        <Welcome />
+        <Books />
+      </main>
+      <MyFooter />
+    </div>
   )
 }
 
