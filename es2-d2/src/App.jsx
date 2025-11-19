@@ -4,7 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
 import Welcome from "./components/Welcome"
-import Books from "./components/AllTheBooks"
+// import Books from "./components/AllTheBooks"
+
+import BookList from "./components/BookList"
+import fantasyBooks from "./books/fantasy.json"
+// className={this.state.selected ? 'border border-danger' : ' '}
 
 function App() {
   return (
@@ -14,7 +18,9 @@ function App() {
       </header>
       <main>
         <Welcome />
-        <Books />
+        {/* <Books /> lo commento per sostituirlo con una nuova implementazione */}
+
+        <BookList books={fantasyBooks} />
       </main>
       <MyFooter />
     </div>

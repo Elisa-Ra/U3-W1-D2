@@ -9,3 +9,13 @@
 main {
   flex: 1;
 }
+/* Per troncare i titoli troppo lunghi */
+.card-title {
+  display: -webkit-box; /* imposta un contenitore flessibile verticale */
+  display: box;
+  -webkit-line-clamp: 2; /* limita a 2 righe */
+  line-clamp: 2;
+  -webkit-box-orient: vertical; /* orienta le righe verticalmente */
+  box-orient: vertical;
+  overflow: hidden; /* nasconde il testo che eccede */
+}
