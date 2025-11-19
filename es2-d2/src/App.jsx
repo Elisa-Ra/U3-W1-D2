@@ -8,6 +8,8 @@ import Welcome from "./components/Welcome"
 
 import BookList from "./components/BookList"
 import fantasyBooks from "./books/fantasy.json"
+import SearchBar from "./components/MySearchBar"
+
 // className={this.state.selected ? 'border border-danger' : ' '}
 
 function App() {
@@ -15,9 +17,10 @@ function App() {
     <div id="root">
       <header>
         <MyNav />
+        <Welcome />
       </header>
       <main>
-        <Welcome />
+        <SearchBar />
         {/* <Books /> lo commento per sostituirlo con una nuova implementazione */}
 
         <BookList books={fantasyBooks} />

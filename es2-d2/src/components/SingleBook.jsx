@@ -54,8 +54,6 @@ class SingleBook extends Component {
     return (
       <Card
         style={{
-          width: "300px",
-          height: "400px",
           border: selected ? "3px solid red" : "1px solid lightgray",
         }}
       >
@@ -73,10 +71,10 @@ class SingleBook extends Component {
           <CardSubtitle className="bg-warning w-50 text-center mx-auto">
             {book.category}
           </CardSubtitle>
+          <Button className="flex-1 mt-2" variant="primary">
+            Compra
+          </Button>
         </Card.Body>
-        <Button className="flex-1" variant="primary">
-          Compra
-        </Button>
       </Card>
     )
   }
