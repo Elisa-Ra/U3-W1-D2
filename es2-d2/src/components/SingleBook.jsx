@@ -3,7 +3,8 @@
 import { Component } from "react"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
-import { CardSubtitle } from "react-bootstrap"
+import { CardSubtitle, Container } from "react-bootstrap"
+import CommentArea from "./CommentArea"
 
 // function SingleBook({ book }) {
 //   return (
@@ -48,34 +49,45 @@ class SingleBook extends Component {
   }
 
   render() {
+    // sarebbe il corrispettivo di const book = this.props.book
     const { book } = this.props
     const { selected } = this.state
 
     return (
-      <Card
-        style={{
-          border: selected ? "3px solid red" : "1px solid lightgray",
-        }}
-      >
-        <Card.Img
-          className="object-fit-contain"
-          variant="top"
-          src={book.img}
-          alt={book.title}
-          style={{ height: "200px", cursor: "pointer" }}
-          onClick={this.bookSelected}
-        />
-        <Card.Body className="d-flex flex-column justify-content-between">
-          <Card.Title className="flex-1 card-title">{book.title}</Card.Title>
-          <Card.Text>Prezzo: {book.price}&euro;</Card.Text>
-          <CardSubtitle className="bg-warning w-50 text-center mx-auto">
-            {book.category}
-          </CardSubtitle>
-          <Button className="flex-1 mt-2" variant="primary">
-            Compra
-          </Button>
-        </Card.Body>
-      </Card>
+      <>
+        <Card
+          style={{
+            // se lo stato della carta è selected, fa apparire il bordo rosso, altrimenti quello standard grigio
+            border: selected ? "3px solid red" : "1px solid lightgray",
+          }}
+        >
+          <Card.Img
+            className="object-fit-contain"
+            variant="top"
+            src={book.img}
+            alt={book.title}
+            style={{ height: "200px", cursor: "pointer" }}
+            // Quando si preme l'img parte la funzione che assegna/rimuove lo stato di selected
+            onClick={this.bookSelected}
+          />
+          {/* CARD DEI SINGOLI LIBRI */}
+          <Card.Body className="d-flex flex-column justify-content-between">
+            <Card.Title className="flex-1 card-title">{book.title}</Card.Title>
+            <Card.Text>Prezzo: {book.price}&euro;</Card.Text>
+            <CardSubtitle className="bg-warning w-50 text-center mx-auto">
+              {book.category}
+            </CardSubtitle>
+            <Button className="flex-1 mt-2" variant="primary">
+              Compra
+            </Button>
+          </Card.Body>
+        </Card>
+        {/* QUESTO CONTAINER APPARE QUANDO LA CARD HA LO STATO DI SELECTED E FA APPARIRE IL COMPONENT CommentArea */}
+        <Container className=" p-0">
+          {/* Short circuit, corrisponde a {selected ? <CommentArea /> : null} quindi se selected è true, fa apparire CommentArea*/}
+          {selected && <CommentArea asin={book.asin} />}
+        </Container>
+      </>
     )
   }
 }
