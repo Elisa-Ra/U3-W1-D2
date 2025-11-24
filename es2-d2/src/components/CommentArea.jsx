@@ -7,8 +7,11 @@ import { Spinner } from "react-bootstrap"
 
 class CommentArea extends Component {
   state = {
+    // array dei commenti ricevuti dal fetch
     commenti: [],
+    // Spinner
     loading: true,
+    // gestione errori
     error: false,
   }
 
@@ -50,10 +53,12 @@ class CommentArea extends Component {
       })
   }
 
+  // La prima volta che il componente viene montato
   componentDidMount() {
     this.getComments()
   }
 
+  // quando cambia il prop asin, riprende i commenti con getComments
   componentDidUpdate(prevProps) {
     if (prevProps.asin !== this.props.asin && this.props.asin) {
       this.setState({ loading: true }, this.getComments)

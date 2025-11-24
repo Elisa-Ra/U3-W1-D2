@@ -6,7 +6,7 @@ import CommentArea from "./CommentArea"
 import SingleBook from "./SingleBook"
 import { useState } from "react"
 
-function BookList({ books }) {
+function BookList({ books, changeAppState }) {
   const [selectedBook, setSelectedBook] = useState(null)
 
   return (
@@ -30,6 +30,7 @@ function BookList({ books }) {
                 <SingleBook
                   book={onebook}
                   onBookSelect={() => setSelectedBook(onebook)}
+                  onClick={() => changeAppState(onebook.asin)}
                 />
               </Col>
             ))}
