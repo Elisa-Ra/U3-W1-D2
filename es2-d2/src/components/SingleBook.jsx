@@ -1,9 +1,7 @@
 // Crea un componente SingleBook utilizzando una funzione. Questo componente dovrà essere predisposto per ricevere nelle props un oggetto corrispondente ad un singolo libro, e visualizzerà la sua copertina e il titolo. Usa le Card di react-bootstrap (se vuoi testarlo, l'oggetto del libro può esser preso da uno dei file .json  che hai ricevuto ieri).
 
 import { Component } from "react"
-import Card from "react-bootstrap/Card"
-import Button from "react-bootstrap/Button"
-import { CardSubtitle, Container } from "react-bootstrap"
+import { CardSubtitle, Container, Card, Button } from "react-bootstrap"
 import CommentArea from "./CommentArea"
 
 // function SingleBook({ book }) {
@@ -46,6 +44,8 @@ class SingleBook extends Component {
     this.setState((beforeState) => ({
       selected: !beforeState.selected,
     }))
+    // Questo dice al parent quale libro è stato selezionato
+    this.props.onBookSelect(this.props.book)
   }
 
   render() {
@@ -59,6 +59,7 @@ class SingleBook extends Component {
           style={{
             // se lo stato della carta è selected, fa apparire il bordo rosso, altrimenti quello standard grigio
             border: selected ? "3px solid red" : "1px solid lightgray",
+            cursor: "pointer",
           }}
         >
           <Card.Img
@@ -82,11 +83,12 @@ class SingleBook extends Component {
             </Button>
           </Card.Body>
         </Card>
+        {/* QUESTO VENIVA USATO IN UN PRECEDENTE ESERCIZIO, ORA NON SERVE */}
         {/* QUESTO CONTAINER APPARE QUANDO LA CARD HA LO STATO DI SELECTED E FA APPARIRE IL COMPONENT CommentArea */}
-        <Container className=" p-0">
-          {/* Short circuit, corrisponde a {selected ? <CommentArea /> : null} quindi se selected è true, fa apparire CommentArea*/}
-          {selected && <CommentArea asin={book.asin} />}
-        </Container>
+        {/* <Container className=" p-0"> */}
+        {/* Short circuit, corrisponde a {selected ? <CommentArea /> : null} quindi se selected è true, fa apparire CommentArea*/}
+        {/* {selected && <CommentArea asin={book.asin} />} */}
+        {/* </Container> */}
       </>
     )
   }
